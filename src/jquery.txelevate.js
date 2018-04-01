@@ -74,6 +74,7 @@
         },
 
         destroy: function() {
+          console.log("destroy")
           let jTxElevate = this
           let filename = jTxElevate.imageSrc.replace(/^.*[\\\/]/, '')
           $('#' + filename).remove()
