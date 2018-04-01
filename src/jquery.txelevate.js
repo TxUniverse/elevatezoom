@@ -108,6 +108,7 @@
             + ";background-repeat: no-repeat;"
             + "position: absolute;"
 
+          let filename = jTxElevate.imageSrc.replace(/^.*[\\\/]/, '')
           jTxElevate.zoomContainer = $('<div id="' + filename + '" class="zoomContainer" style="-webkit-transform: translateZ(0);position:absolute;left:'+jTxElevate.nzOffset.left+'px;top:'+jTxElevate.nzOffset.top+'px;height:'+jTxElevate.nzHeight+'px;width:'+jTxElevate.nzWidth+'px;"></div>');
           $('body').append(jTxElevate.zoomContainer)
 
