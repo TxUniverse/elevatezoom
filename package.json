@@ -1,0 +1,26 @@
+{
+  "name": "tx-elevate",
+  "version": "0.0.1",
+  "description": "A jQuery image zoom plugin for Tx projects",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TxUniverse/tx-elevate.git"
+  },
+  "keywords": [
+    "Image",
+    "Zoom",
+    "Tx"
+  ],
+  "author": "Marc Godard (Tx Universe)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TxUniverse/tx-elevate/issues"
+  },
+  "homepage": "https://github.com/TxUniverse/tx-elevate#readme"
+}
