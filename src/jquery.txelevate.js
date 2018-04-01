@@ -77,7 +77,7 @@
 
         destroy: function() {
           let jTxElevate = this
-          $('body').append(jTxElevate.zoomContainer);
+          $('body').remove(jTxElevate.zoomContainer)
           $('body').off('destroy-elevate', jTxElevate.destroy)
         },
 
@@ -198,7 +198,6 @@
             if (jTxElevate.overWindow === false){jTxElevate.setElements("show")}
           }).mouseleave(function(){
             jTxElevate.setElements("hide")
-            jTxElevate.options.onDestroy(jTxElevate.$elem)
           })
 
           if (jTxElevate.options.scrollZoom) {
