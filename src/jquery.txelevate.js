@@ -106,7 +106,7 @@
             + "position: absolute;"
 
           let filename = jTxElevate.imageSrc.replace(/^.*[\\\/]/, '')
-          let $filename = $('div#'+ filename);
+          let $filename = $('#'+ filename);
           if ($filename.length > 0) {
             $filename.remove()
           }
