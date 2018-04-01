@@ -30,9 +30,7 @@
         zoomWindowFadeIn: false,
         zoomWindowFadeOut: false,
         cursor: "crosshair",
-        onComplete: $.noop,
-        onDestroy: function() {},
-        onZoomedImageLoaded: function() {}
+        onDestroy: function() {}
       }
 
       let TxElevate = {
@@ -192,9 +190,10 @@
 
           jTxElevate.zoomContainer.add(jTxElevate.$elem).mouseenter(function() {
             if (jTxElevate.overWindow === false){jTxElevate.setElements("show")}
-          }).mouseleave(function(){
+          }).mouseleave(function() {
             jTxElevate.setElements("hide")
-            jTxElevate.options.onDestroy(jTxElevate)
+            jTxElevate.zoomContainer.remove()
+            // jTxElevate.options.onDestroy(jTxElevate)
           })
 
           if (jTxElevate.options.scrollZoom) {
