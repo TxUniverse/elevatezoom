@@ -29,10 +29,7 @@
         zoomWindowPosition: 1,
         zoomWindowFadeIn: false,
         zoomWindowFadeOut: false,
-        cursor: "crosshair",
-        onComplete: $.noop,
-        onDestroy: function() {},
-        onZoomedImageLoaded: function() {}
+        cursor: "crosshair"
       }
 
       let TxElevate = {
@@ -46,12 +43,12 @@
           jTxElevate.imageSrc = options.zoomImage || jTxElevate.$elem.attr("src")
           jTxElevate.options = Object.assign( defaultOptions, options )
 
-          console.log(jTxElevate.options, options)
-
           //Remove alt on hover
           jTxElevate.$elem.parent().removeAttr('title').removeAttr('alt')
           jTxElevate.zoomImage = jTxElevate.imageSrc
           jTxElevate.refresh( 1 )
+
+          $('body').on('destroy-elevate', jTxElevate.destroy)
         },
 
         refresh: function ( length ) {
@@ -76,6 +73,12 @@
             jTxElevate.options.onZoomedImageLoaded(jTxElevate.$elem)
           }
           newImg.src = imgSrc // this must be done AFTER setting onload
+        },
+
+        destroy: function() {
+          let jTxElevate = this
+          $('body').append(jTxElevate.zoomContainer);
+          $('body').off('destroy-elevate', jTxElevate.destroy)
         },
 
         startZoom: function () {
@@ -113,7 +116,7 @@
             + "position: absolute;"
 
           jTxElevate.zoomContainer = $('<div class="zoomContainer" style="-webkit-transform: translateZ(0);position:absolute;left:'+jTxElevate.nzOffset.left+'px;top:'+jTxElevate.nzOffset.top+'px;height:'+jTxElevate.nzHeight+'px;width:'+jTxElevate.nzWidth+'px;"></div>');
-          $('body').append(jTxElevate.zoomContainer);
+          $('body').append(jTxElevate.zoomContainer)
 
           //create zoom window
           if (isNaN(jTxElevate.options.zoomWindowPosition)){
