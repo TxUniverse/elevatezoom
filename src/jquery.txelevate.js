@@ -44,7 +44,9 @@
           jTxElevate.$elem = $( el )
 
           jTxElevate.imageSrc = options.zoomImage || jTxElevate.$elem.attr("src")
-          jTxElevate.options = Object.assign(defaultOptions, options )
+          jTxElevate.options = Object.assign( defaultOptions, options )
+
+          console.log(jTxElevate.options, options)
 
           //Remove alt on hover
           jTxElevate.$elem.parent().removeAttr('title').removeAttr('alt')
@@ -195,9 +197,6 @@
             jTxElevate.setElements("hide")
             jTxElevate.options.onDestroy(jTxElevate.$elem)
           })
-
-          if (jTxElevate.options.minZoomLevel) jTxElevate.minZoomLevel = jTxElevate.options.minZoomLevel
-          else jTxElevate.minZoomLevel = jTxElevate.options.scrollZoomIncrement * 2
 
           if (jTxElevate.options.scrollZoom) {
             jTxElevate.zoomContainer.add(jTxElevate.$elem).bind('mousewheel DOMMouseScroll MozMousePixelScroll', function(e){
