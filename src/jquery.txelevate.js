@@ -68,8 +68,6 @@
             //once image is loaded start the calls
             jTxElevate.startZoom()
             jTxElevate.currentImage = jTxElevate.imageSrc
-            //let caller know image has been loaded
-            jTxElevate.options.onZoomedImageLoaded(jTxElevate.$elem)
           }
           newImg.src = imgSrc // this must be done AFTER setting onload
         },
