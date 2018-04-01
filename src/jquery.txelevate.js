@@ -178,17 +178,8 @@
       jTxElevate.zoomContainer.add(jTxElevate.$elem).mouseenter(function() {
         if (jTxElevate.overWindow === false){jTxElevate.setElements("show")}
       }).mouseleave(function(){
-        if (!jTxElevate.scrollLock){
-          jTxElevate.setElements("hide")
-          jTxElevate.options.onDestroy(jTxElevate.$elem)
-        }
-      })
-
-      jTxElevate.zoomWindow.mouseenter(function(){
-        jTxElevate.overWindow = true
         jTxElevate.setElements("hide")
-      }).mouseleave(function(){
-        jTxElevate.overWindow = false
+        jTxElevate.options.onDestroy(jTxElevate.$elem)
       })
 
       if (jTxElevate.options.minZoomLevel) jTxElevate.minZoomLevel = jTxElevate.options.minZoomLevel
@@ -234,6 +225,7 @@
       let jTxElevate = this
       if (!jTxElevate.options.zoomEnabled) { return false }
       if (type === "show" && jTxElevate.isWindowSet) jTxElevate.showHideWindow("show")
+      if (type === "hide") jTxElevate.showHideWindow("hide")
     },
 
     setPosition: function( e ) {
@@ -257,7 +249,7 @@
       jTxElevate.Eloppos = (jTxElevate.mouseLeft < ((jTxElevate.nzWidth/2)/jTxElevate.widthRatio))
       jTxElevate.Eroppos = (jTxElevate.mouseLeft > (jTxElevate.nzWidth - (jTxElevate.nzWidth/2)/jTxElevate.widthRatio))
 
-      // if the mouse position of the slider is one of the outerbounds, then hide  window
+      // if the mouse position of the slider is one of the outer bounds, then hide window
       if (jTxElevate.mouseLeft < 0 || jTxElevate.mouseTop < 0 || jTxElevate.mouseLeft > jTxElevate.nzWidth || jTxElevate.mouseTop > jTxElevate.nzHeight ) {
         jTxElevate.setElements("hide")
       } else {
