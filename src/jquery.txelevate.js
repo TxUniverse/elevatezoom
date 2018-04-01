@@ -106,10 +106,7 @@
             + "position: absolute;"
 
           let filename = jTxElevate.imageSrc.replace(/^.*[\\\/]/, '')
-          let $filename = $('#'+ filename);
-          if ($filename.length > 0) {
-            $filename.remove()
-          }
+          $('#'+ filename).remove()
 
           jTxElevate.zoomContainer = $('<div id="' + filename + '" class="zoomContainer" style="-webkit-transform: translateZ(0);position:absolute;left:'+jTxElevate.nzOffset.left+'px;top:'+jTxElevate.nzOffset.top+'px;height:'+jTxElevate.nzHeight+'px;width:'+jTxElevate.nzWidth+'px;"></div>');
           $('body').append(jTxElevate.zoomContainer)
