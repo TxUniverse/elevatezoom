@@ -17,7 +17,7 @@ Include jQuery and the plugin on a page. Include your images and initialise the 
 </script>
 ```
 
-For more information on how to setup and customise, [check the examples](http://www.elevateweb.co.uk/image-zoom/examples).
+For more information on how to setup and customise, [check the original projects examples](http://www.elevateweb.co.uk/image-zoom/examples). We have removed many options that we felt were not needed for our project.
 
 ## License
 MIT licenses.
