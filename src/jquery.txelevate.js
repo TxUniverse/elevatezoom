@@ -29,7 +29,10 @@
         zoomWindowPosition: 1,
         zoomWindowFadeIn: false,
         zoomWindowFadeOut: false,
-        cursor: "crosshair"
+        cursor: "crosshair",
+        onComplete: $.noop,
+        onDestroy: function() {},
+        onZoomedImageLoaded: function() {}
       }
 
       let TxElevate = {
@@ -47,9 +50,6 @@
           jTxElevate.$elem.parent().removeAttr('title').removeAttr('alt')
           jTxElevate.zoomImage = jTxElevate.imageSrc
           jTxElevate.refresh( 1 )
-
-          let filename = jTxElevate.imageSrc.replace(/^.*[\\\/]/, '')
-          $('#'+ filename).remove()
         },
 
         refresh: function ( length ) {
@@ -70,6 +70,8 @@
             //once image is loaded start the calls
             jTxElevate.startZoom()
             jTxElevate.currentImage = jTxElevate.imageSrc
+            //let caller know image has been loaded
+            jTxElevate.options.onZoomedImageLoaded(jTxElevate.$elem)
           }
           newImg.src = imgSrc // this must be done AFTER setting onload
         },
@@ -192,6 +194,7 @@
             if (jTxElevate.overWindow === false){jTxElevate.setElements("show")}
           }).mouseleave(function(){
             jTxElevate.setElements("hide")
+            jTxElevate.options.onDestroy(jTxElevate)
           })
 
           if (jTxElevate.options.scrollZoom) {
