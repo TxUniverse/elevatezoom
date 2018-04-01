@@ -69,16 +69,14 @@
             //once image is loaded start the calls
             jTxElevate.startZoom()
             jTxElevate.currentImage = jTxElevate.imageSrc
-            //let caller know image has been loaded
-            jTxElevate.options.onZoomedImageLoaded(jTxElevate.$elem)
           }
           newImg.src = imgSrc // this must be done AFTER setting onload
         },
 
         destroy: function() {
           let jTxElevate = this
-          $('body').remove(jTxElevate.zoomContainer)
-          $('body').off('destroy-elevate', jTxElevate.destroy)
+          let filename = jTxElevate.imageSrc.replace(/^.*[\\\/]/, '')
+          $('#' + filename).remove()
         },
 
         startZoom: function () {
@@ -115,7 +113,9 @@
             + ";background-repeat: no-repeat;"
             + "position: absolute;"
 
-          jTxElevate.zoomContainer = $('<div class="zoomContainer" style="-webkit-transform: translateZ(0);position:absolute;left:'+jTxElevate.nzOffset.left+'px;top:'+jTxElevate.nzOffset.top+'px;height:'+jTxElevate.nzHeight+'px;width:'+jTxElevate.nzWidth+'px;"></div>');
+          let filename = jTxElevate.imageSrc.replace(/^.*[\\\/]/, '')
+
+          jTxElevate.zoomContainer = $('<div id="' + filename + '" class="zoomContainer" style="-webkit-transform: translateZ(0);position:absolute;left:'+jTxElevate.nzOffset.left+'px;top:'+jTxElevate.nzOffset.top+'px;height:'+jTxElevate.nzHeight+'px;width:'+jTxElevate.nzWidth+'px;"></div>');
           $('body').append(jTxElevate.zoomContainer)
 
           //create zoom window
