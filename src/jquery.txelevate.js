@@ -29,8 +29,7 @@
         zoomWindowPosition: 1,
         zoomWindowFadeIn: false,
         zoomWindowFadeOut: false,
-        cursor: "crosshair",
-        onDestroy: function() {}
+        cursor: "crosshair"
       }
 
       let TxElevate = {
@@ -48,6 +47,8 @@
           jTxElevate.$elem.parent().removeAttr('title').removeAttr('alt')
           jTxElevate.zoomImage = jTxElevate.imageSrc
           jTxElevate.refresh( 1 )
+
+          $('body').on('destroy-elevated', () => { jTxElevate.zoomContainer.remove() })
         },
 
         refresh: function ( length ) {
@@ -190,8 +191,6 @@
             if (jTxElevate.overWindow === false){jTxElevate.setElements("show")}
           }).mouseleave(function() {
             jTxElevate.setElements("hide")
-            jTxElevate.zoomContainer.remove()
-            // jTxElevate.options.onDestroy(jTxElevate)
           })
 
           if (jTxElevate.options.scrollZoom) {
