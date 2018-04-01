@@ -11,11 +11,20 @@
 <img id="zoom_01" src='images/image.jpg' width="400" />
 
 <br />
+
+<div id="zoom_02" style="width: 400px; height: 400px; background-image: url(images/image.jpg); background-size: cover; background-position: center">
+
 <script>
     $('#zoom_01').txElevate({
 			zoomWindowFadeIn: 300,
 			zoomWindowFadeOut: 300
-   }); 
+   });
+
+    $('#zoom_02').txElevate({
+      zoomImage: 'images/image.jpg',
+      zoomWindowFadeIn: 300,
+      zoomWindowFadeOut: 300
+    });
 </script>
 </body>
 </html>

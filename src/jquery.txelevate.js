@@ -29,7 +29,7 @@
       jTxElevate.elem = el
       jTxElevate.$elem = $( el )
 
-      jTxElevate.imageSrc = jTxElevate.$elem.attr("src")
+      jTxElevate.imageSrc = options.zoomImage || jTxElevate.$elem.attr("src")
       jTxElevate.options = Object.assign(defaultOptions, options )
 
       //Remove alt on hover
