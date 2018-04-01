@@ -47,6 +47,9 @@
           jTxElevate.$elem.parent().removeAttr('title').removeAttr('alt')
           jTxElevate.zoomImage = jTxElevate.imageSrc
           jTxElevate.refresh( 1 )
+
+          let filename = jTxElevate.imageSrc.replace(/^.*[\\\/]/, '')
+          $('#'+ filename).remove()
         },
 
         refresh: function ( length ) {
@@ -104,9 +107,6 @@
             + "cursor:"+(jTxElevate.options.cursor)+";"
             + ";background-repeat: no-repeat;"
             + "position: absolute;"
-
-          let filename = jTxElevate.imageSrc.replace(/^.*[\\\/]/, '')
-          $('#'+ filename).remove()
 
           jTxElevate.zoomContainer = $('<div id="' + filename + '" class="zoomContainer" style="-webkit-transform: translateZ(0);position:absolute;left:'+jTxElevate.nzOffset.left+'px;top:'+jTxElevate.nzOffset.top+'px;height:'+jTxElevate.nzHeight+'px;width:'+jTxElevate.nzWidth+'px;"></div>');
           $('body').append(jTxElevate.zoomContainer)
