@@ -243,8 +243,8 @@
 
           //recaclc offset each time in case the image moves
           //this can be caused by other on page elements
-          jTxElevate.nzHeight = jTxElevate.options.height
-          jTxElevate.nzWidth = jTxElevate.options.width
+          jTxElevate.nzHeight = jTxElevate.$elem.height()
+          jTxElevate.nzWidth = jTxElevate.$elem.width()
           jTxElevate.nzOffset = jTxElevate.$elem.offset()
 
           //container fix
