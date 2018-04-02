@@ -29,7 +29,8 @@
         zoomWindowPosition: 1,
         zoomWindowFadeIn: false,
         zoomWindowFadeOut: false,
-        cursor: "crosshair"
+        cursor: "crosshair",
+        appendTo: 'body'
       }
 
       let TxElevate = {
@@ -48,7 +49,7 @@
           jTxElevate.zoomImage = jTxElevate.imageSrc
           jTxElevate.refresh( 1 )
 
-          $('body').on('destroy-elevated', () => { jTxElevate.zoomContainer.remove() })
+          $(jTxElevate.options.appendTo).on('destroy-elevated', () => { jTxElevate.zoomContainer.remove() })
         },
 
         refresh: function ( length ) {
@@ -109,17 +110,17 @@
 
           let filename = jTxElevate.imageSrc.replace(/^.*[\\\/]/, '')
           jTxElevate.zoomContainer = $('<div id="' + filename + '" class="zoomContainer" style="-webkit-transform: translateZ(0);position:absolute;left:'+jTxElevate.nzOffset.left+'px;top:'+jTxElevate.nzOffset.top+'px;height:'+jTxElevate.nzHeight+'px;width:'+jTxElevate.nzWidth+'px;"></div>');
-          $('body').append(jTxElevate.zoomContainer)
+          $(jTxElevate.options.appendTo).append(jTxElevate.zoomContainer)
 
           //create zoom window
           if (isNaN(jTxElevate.options.zoomWindowPosition)){
-            jTxElevate.zoomWindow = $("<div style='z-index:999;left:"+(jTxElevate.windowOffsetLeft)+"px;top:"+(jTxElevate.windowOffsetTop)+"px;" + jTxElevate.zoomWindowStyle + "' class='zoomWindow'>&nbsp;</div>")
-              .appendTo('body')
+            jTxElevate.zoomWindow = $("<div style='z-index:1100;left:"+(jTxElevate.windowOffsetLeft)+"px;top:"+(jTxElevate.windowOffsetTop)+"px;" + jTxElevate.zoomWindowStyle + "' class='zoomWindow'>&nbsp;</div>")
+              .appendTo(jTxElevate.options.appendTo)
               .click(function () {
                 jTxElevate.$elem.trigger('click')
               })
           } else {
-            jTxElevate.zoomWindow = $("<div style='z-index:999;left:"+(jTxElevate.windowOffsetLeft)+"px;top:"+(jTxElevate.windowOffsetTop)+"px;" + jTxElevate.zoomWindowStyle + "' class='zoomWindow'>&nbsp;</div>")
+            jTxElevate.zoomWindow = $("<div style='z-index:1100;left:"+(jTxElevate.windowOffsetLeft)+"px;top:"+(jTxElevate.windowOffsetTop)+"px;" + jTxElevate.zoomWindowStyle + "' class='zoomWindow'>&nbsp;</div>")
               .appendTo(jTxElevate.zoomContainer)
               .click(function () {
                 jTxElevate.$elem.trigger('click')
